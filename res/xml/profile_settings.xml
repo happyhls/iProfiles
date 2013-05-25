@@ -1,0 +1,25 @@
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference android:positiveButtonText="保存" android:title="名称" android:enabled="true" android:negativeButtonText="取消" android:key="profile_setting_name" android:dialogTitle="名称" android:summary="请输入情景模式的名称" android:dialogMessage="请输入新建情景模式的名称" android:defaultValue="新建情景模式" />
+    <PreferenceCategory
+            android:title="基本设置">
+
+        <CheckBoxPreference android:key="profile_setting_quiteall" android:title="静音模式" android:summary="全部静音" android:disableDependentsState="true" android:persistent="true" android:defaultValue="false"/>
+        <CheckBoxPreference android:title="统一音量" android:summary="勾选将全部音量设置为一样大小" android:dependency="profile_setting_quiteall" android:disableDependentsState="true" android:key="profile_setting_voiceall_check" android:persistent="true" android:defaultValue="true"/>
+        <me.happyhls.iprofiles.profiles.AudioPickerPreference android:summary="当前音量设置:"  android:dependency="profile_setting_quiteall" android:key="profile_setting_voiceall" android:title="所有铃声设置"/>
+        <CheckBoxPreference android:title="震动" android:summary="是否有震动提示" android:key="profile_setting_vibrate" android:persistent="true" android:defaultValue="true"/>
+
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+            android:title="详细设置">
+            <me.happyhls.iprofiles.profiles.AudioPickerPreference android:dependency="profile_setting_voiceall_check" android:summary="当前音量设置:" android:key="profile_setting_ringtone" android:title="来电铃声音量"/>
+            <me.happyhls.iprofiles.profiles.AudioPickerPreference android:dependency="profile_setting_voiceall_check" android:key="profile_setting_media" android:title="媒体音量" android:summary="当前音量设置:"/>
+            <me.happyhls.iprofiles.profiles.AudioPickerPreference android:dependency="profile_setting_voiceall_check" android:summary="当前音量设置:" android:key="profile_setting_notification" android:title="通知声音量"/>
+            <me.happyhls.iprofiles.profiles.AudioPickerPreference android:dependency="profile_setting_voiceall_check" android:summary="当前音量设置:" android:key="profile_setting_alarm" android:title="闹钟音量"/>
+
+    </PreferenceCategory>
+    
+
+</PreferenceScreen>
