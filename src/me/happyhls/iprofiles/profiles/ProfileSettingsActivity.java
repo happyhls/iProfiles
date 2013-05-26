@@ -28,6 +28,7 @@ public class ProfileSettingsActivity extends FragmentActivity{
         boolean addflag = intent.getBooleanExtra("Add", false);
         int id= intent.getIntExtra("ID", -1);
         Log.i("ProfileSettingActivity","Add:"+addflag+" ID:"+id);
+
 		// savedInstanceState is non-null when there is fragment state
 		// saved from previous configurations of this activity
 		// (e.g. when rotating the screen from portrait to landscape).

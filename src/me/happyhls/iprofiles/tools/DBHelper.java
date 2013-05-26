@@ -27,6 +27,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		super(context, DATABASE_FILE, null, DATABASE_VERSION);
 		database = getWritableDatabase();
 		this.context = context;
+
 	}
 	
 	@Override
@@ -34,7 +35,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		// TODO Auto-generated method stub
 		database = db;
 	}
-	
+
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db,  int oldVersion, int newVersion) {
@@ -46,6 +47,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	public void onOpen(SQLiteDatabase db) {
 		super.onOpen(db);
 		database = db;
+
 	}
 	
 	@Override
@@ -122,6 +124,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	    	else{
 				return database.query(table, columns, null, null, groupBy, having, orderBy);
 	    	}	
+
 	    }
 	    return null;
 	    

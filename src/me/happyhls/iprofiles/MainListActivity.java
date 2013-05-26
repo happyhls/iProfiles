@@ -71,7 +71,7 @@ public class MainListActivity extends FragmentActivity implements
 			Bundle arguments = new Bundle();
 			arguments.putString(SchedulsFragment.ARG_ITEM_ID, id);
 			//SchedulsFragment fragment = new SchedulsFragment();			
-						
+
 			FragmentManager fragmentManager = getFragmentManager();  
 	        FragmentTransaction fragmentTransaction =   
 	            fragmentManager.beginTransaction();  

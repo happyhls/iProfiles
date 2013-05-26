@@ -2,7 +2,6 @@ package me.happyhls.iprofiles.tools;
 
 import java.util.HashMap;
 
-import android.R.integer;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -23,6 +22,7 @@ public class ProfilesDBHelper extends DBHelper{
 	
 	public ProfilesDBHelper(Context context) {
 		super(context);
+
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -30,8 +30,7 @@ public class ProfilesDBHelper extends DBHelper{
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
-		//使用execSQL()方法执行DDL语句，如果没有异常，这个方法没有返回值
-		super.onCreate(db);
+		//使用execSQL()方法执行DDL语句，如果没有异常，这个方法没有返回值		
 		db.execSQL("create table " + TABLE + "(id INTEGER PRIMARY KEY AUTOINCREMENT," 
 					+ ProfileDBHelperKey.name + " varchar(20)," 
                     + ProfileDBHelperKey.mute + " INTEGER,"

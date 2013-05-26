@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
+
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
@@ -25,6 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 @SuppressLint("ValidFragment")
+
 public class ProfileFragment extends PreferenceFragment implements OnPreferenceClickListener,OnSharedPreferenceChangeListener{
 	
 	SharedPreferences sharedPreferences;
@@ -95,7 +97,6 @@ public class ProfileFragment extends PreferenceFragment implements OnPreferenceC
    	
     	initDatas();
 
-
     }
 	
 	public void initDatas(){
@@ -118,8 +119,8 @@ public class ProfileFragment extends PreferenceFragment implements OnPreferenceC
 			
 		}
 	}
-	
-	@Override  
+
+		@Override  
 	public void onResume() {  
 		super.onResume();  
 		getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);

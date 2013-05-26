@@ -64,6 +64,7 @@ public class MainListFragment extends ListFragment {
 	
 	MainListAdapter profilesAdapter ;
 
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -98,6 +99,7 @@ public class MainListFragment extends ListFragment {
 					break;
 			}
 				return true;
+
 			}
 		};
 		getListView().setOnItemLongClickListener(listener);
@@ -111,7 +113,6 @@ public class MainListFragment extends ListFragment {
 	private static Callbacks sDummyCallbacks = new Callbacks() {
 		@Override
 		public void onItemSelected(String id) {
-
 		}
 	};
 
@@ -134,7 +135,7 @@ public class MainListFragment extends ListFragment {
 		setListAdapter(profilesAdapter);
 		
 	}
-	
+
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -211,6 +212,7 @@ public class MainListFragment extends ListFragment {
 			default:
 				break;
 		}
+
 	}
 
 	@Override
