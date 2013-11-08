@@ -49,8 +49,8 @@ public class ApplyProfiles extends Activity{
 		databaseHelper = DatabaseHelper.getInstance(this);
 		
 		Intent intent = getIntent();
-		profileId = intent.getLongExtra(APPLYPROFILES_INTENT_PROFILEID, -1);
 		profileType = intent.getIntExtra(APPLYPROFILES_INTENT_PROFILETYPE, -1);
+		profileId = intent.getLongExtra(APPLYPROFILES_INTENT_PROFILEID, -1);
 		
 		if( profileId<0 || profileType<0 ){
 			this.finish();
