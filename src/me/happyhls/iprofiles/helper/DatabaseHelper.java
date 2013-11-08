@@ -1,5 +1,7 @@
 package me.happyhls.iprofiles.helper;
 
+import java.util.ArrayList;
+
 import me.happyhls.iprofiles.model.Profile;
 import me.happyhls.iprofiles.model.Schedule;
 import android.content.ContentValues;
@@ -31,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String SCHEDULE_TABLE_NAME = "schedules";
 	private static final String SCHEDULE_TYPE = "type";
 	private static final String SCHEDULE_PROFILEID = "profileId";
-	private static final String SCHEDULE_ACTION = "type";
+	private static final String SCHEDULE_ACTION = "action";
 	private static final String SCHEDULE_TIME = "time";
 	private static final String SCHEDULE_NOTE = "note";
 
@@ -73,7 +75,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// db.execSQL(LIGHTS_CREATE_STATEMENT);
-
+		db.execSQL(PROFILE_CREATE_STATEMENT);
+		db.execSQL(SCHEDULE_CREATE_STATEMENT);
 	}
 
 	@Override
@@ -119,8 +122,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		contentValues.put(PROFILE_MEDIA, profile.getMedia());
 		contentValues.put(PROFILE_NOTIFICATION, profile.getNotification());
 		contentValues.put(PROFILE_ALARM, profile.getAlarm());
+		
 		return db.insert(PROFILE_TABLE_NAME, null, contentValues);
 	}
+	
+	public int updateProfile(Profile profile){
+		ContentValues contentValues = new ContentValues();
+		contentValues.put(MODEL_NAME, profile.getName());
+		contentValues.put(PROFILE_MUTE, profile.isMute()?1:0);
+		contentValues.put(PROFILE_VIBRATE, profile.isVibrate()?1:0);
+		contentValues.put(PROFILE_RINGTONE, profile.getRingtone());
+		contentValues.put(PROFILE_MEDIA, profile.getMedia());
+		contentValues.put(PROFILE_NOTIFICATION, profile.getNotification());
+		contentValues.put(PROFILE_ALARM, profile.getAlarm());
+		
+		String whereClause = MODEL_ID + "= ? ";
+		String[] whereParams = { String.valueOf(profile.getId()) };
+		
+		return db.update(PROFILE_ALARM, contentValues, whereClause, whereParams);
+	}
+	
+	public ArrayList<Profile> getAllProfiles(){
+		String[] columns = { MODEL_ID, MODEL_NAME, PROFILE_MUTE, PROFILE_VIBRATE, PROFILE_RINGTONE,
+								PROFILE_MEDIA, PROFILE_NOTIFICATION, PROFILE_ALARM};
+		
+		Cursor cursor = db.query(PROFILE_TABLE_NAME, columns, null, null, null, null, null);
+		
+		ArrayList<Profile> profiles = new ArrayList<Profile>();
+		
+		try{
+			if(cursor!=null){
+				cursor.moveToFirst();
+				
+				while(!cursor.isAfterLast()){
+					Profile profile = new Profile(cursor.getLong(0), cursor.getString(1), cursor.getInt(2)>0,
+							cursor.getInt(3)>0, cursor.getInt(4), cursor.getInt(5), cursor.getInt(6), cursor.getInt(7));
+					profiles.add(profile);
+					cursor.moveToNext();
+				}
+			}
+		} catch (SQLiteException ex){
+			ex.printStackTrace();
+			return null;
+		}
+		
+		return profiles;
+	}
+	
+
 	
 	public Schedule getSchedule(long id){
 		String[] columns = { MODEL_ID, MODEL_NAME, SCHEDULE_TYPE, SCHEDULE_PROFILEID, SCHEDULE_ACTION,
@@ -155,7 +204,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		contentValues.put(SCHEDULE_ACTION, schedule.getAction());
 		contentValues.put(SCHEDULE_TIME, schedule.getTime());
 		contentValues.put(SCHEDULE_NOTE, schedule.getNote());
+		
 		return db.insert(SCHEDULE_TABLE_NAME, null, contentValues);
 	}
+	
+	public int updateSchedule(Schedule schedule){
+		ContentValues contentValues = new ContentValues();
+		contentValues.put(MODEL_NAME, schedule.getName());
+		contentValues.put(SCHEDULE_TYPE, schedule.getType());
+		contentValues.put(SCHEDULE_PROFILEID, schedule.getProfileId());
+		contentValues.put(SCHEDULE_ACTION, schedule.getAction());
+		contentValues.put(SCHEDULE_TIME, schedule.getTime());
+		contentValues.put(SCHEDULE_NOTE, schedule.getNote());
+		
+		String whereClause = MODEL_ID + "= ? ";
+		String[] whereParams = { String.valueOf(schedule.getId()) };	
+		return db.update(SCHEDULE_TABLE_NAME, contentValues, whereClause, whereParams);
+	}
 
+	public ArrayList<Schedule> getAllSchedules(long id){
+		String[] columns = { MODEL_ID, MODEL_NAME, SCHEDULE_TYPE, SCHEDULE_PROFILEID, SCHEDULE_ACTION,
+				SCHEDULE_TIME, SCHEDULE_NOTE };
+		
+		Cursor cursor = db.query(SCHEDULE_TABLE_NAME, columns, null, null, null, null, null);
+
+		ArrayList<Schedule> schedules = new ArrayList<Schedule>();
+		try{
+			if(cursor!=null){
+				cursor.moveToFirst();
+				while(!cursor.isAfterLast()){
+					Schedule schedule = new Schedule(cursor.getLong(0), cursor.getString(1),cursor.getInt(2), 
+							cursor.getInt(3), cursor.getInt(4), cursor.getLong(5), cursor.getString(6));
+					schedules.add(schedule);
+					cursor.moveToNext();
+				}
+			}
+		}catch (SQLiteException ex){
+			ex.printStackTrace();
+			return null;
+		}
+		return schedules;
+	}
 }

@@ -15,33 +15,13 @@ public final class R {
         public static final int samll_icon=0x7f020001;
     }
     public static final class id {
-        public static final int ItemTitle=0x7f070004;
-        public static final int MyListItem=0x7f070003;
-        public static final int item_detail_container=0x7f070000;
-        public static final int item_list=0x7f070001;
-        public static final int profiles_detail=0x7f070002;
+        public static final int item=0x7f070002;
+        public static final int listview=0x7f070000;
+        public static final int listviewItem=0x7f070001;
     }
     public static final class layout {
-        public static final int activity_item_detail=0x7f030000;
-        /** 
-    Layout alias to replace the single-pane version of the layout with a
-    two-pane version on Large screens.
-
-    For more on layout aliases, see:
-    http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
-    
-
-    Layout alias to replace the single-pane version of the layout with a
-    two-pane version on Large screens.
-
-    For more on layout aliases, see:
-    http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
-    
-         */
-        public static final int activity_item_list=0x7f030001;
-        public static final int activity_item_twopane=0x7f030002;
-        public static final int fragment_item_detail=0x7f030003;
-        public static final int profile_listview=0x7f030004;
+        public static final int profile_activity=0x7f030000;
+        public static final int profile_listview_item=0x7f030001;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
@@ -57,17 +37,6 @@ public final class R {
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         
-
-        Base application theme for API 11+. This theme completely replaces
-        AppBaseTheme from res/values/styles.xml on API 11+ devices.
-    
- API 11 theme customizations can go here. 
-
-        Base application theme for API 14+. This theme completely replaces
-        AppBaseTheme from BOTH res/values/styles.xml and
-        res/values-v11/styles.xml on API 14+ devices.
-    
- API 14 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f060000;
         /**  Application theme. 

@@ -1,8 +1,8 @@
-package me.happyhls.iprofiles.profiles;
+package me.happyhls.iprofiles.util;
 
 import java.io.IOException;
 
-import me.happyhls.iprofiles.profiles.AudioType.VoiceType;
+import me.happyhls.iprofiles.util.AudioType.VoiceType;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -33,10 +33,7 @@ public class AudioPickerPreference extends DialogPreference {
 	private AudioType audioType;
 	private int averageVolumeMax = 15;
 	private int currentVolumeSet = -1;
-	
-	
-
-	
+		
 	public AudioPickerPreference(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
@@ -45,11 +42,9 @@ public class AudioPickerPreference extends DialogPreference {
 
 	}
 	
-
 	enum ProfileAddEditStatus{
 		Add,Edit
 	}
-	
 	
 	protected void onPrepareDialogBuilder(Builder builder) {
 

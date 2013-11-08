@@ -1,4 +1,4 @@
-package me.happyhls.iprofiles.profiles;
+package me.happyhls.iprofiles.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;

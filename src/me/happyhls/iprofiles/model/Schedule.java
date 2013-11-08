@@ -12,7 +12,7 @@ public class Schedule extends Model implements Serializable, Parcelable{
 	 */
 	private static final long serialVersionUID = 8469219936642685328L;
 	
-	public static final int SCHEDULE_TYPE_PROFILE = 0;
+	public static final int SCHEDULE_TYPE_PROFILE = 1;
 	public static final int SCHEDULE_TYPE_AIRPLANE = 0;
 	
 	public static final int SCHEDULE_ACTION_ON = 1;
